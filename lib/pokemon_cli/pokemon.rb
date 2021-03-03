@@ -2,7 +2,7 @@ class Pokemon
 
     @@all = []
 
-    attr_accessor :name, :type
+    attr_accessor :name, :type, :hp
 
     def initialize(name, type, hp)
         @name = name 
@@ -18,7 +18,9 @@ class Pokemon
     def self.all
         @@all
     end
-    
+
+    #write a method to index all pokemon in alphabetical order 1 - 100 
+
 
 
 end
