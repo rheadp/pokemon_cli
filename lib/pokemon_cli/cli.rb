@@ -1,6 +1,8 @@
 class CLI
     #create a method for entry into CLI
 
+    attr_accessor :alpha, :details, :poke_input
+
     def start
         puts "Welcome to the Poke Index!"
         API.get_pokemon
@@ -50,10 +52,37 @@ class CLI
     end
 
     def pokemon_selection
-        puts "Enter the number beside the Pokemon's name for more detail"
-
-        selection = user_input
-        puts "#{selection}"
-        #Pokemon.find_pokemon(selection)
+        puts ""
+        puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+        puts "Enter the number beside the Pokemon's name for more info"
+        @poke_input = gets.strip
+        if poke_input.to_i.between?(1,20)
+            @alpha = poke_input.to_i-1
+            pokemon_info(alpha)
+        end
     end
+
+    def pokemon_info(alpha)
+        @details = alphabetical_pokemon[alpha]
+        puts "*****************************"
+        pokemon_name
+        pokemon_hp
+        pokemon_type
+        puts "*****************************"
+        pokemon_selection
+    end
+    
+    def pokemon_name
+        puts "Name: #{@details.name}"
+    end 
+
+    def pokemon_hp
+        puts "HP: #{@details.hp}"
+    end
+
+    def pokemon_type
+        puts "Type: #{@details.type}"
+    end
+
+
 end

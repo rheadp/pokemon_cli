@@ -10,10 +10,10 @@ class API
             uri_2 = URI.parse(url)
             response_2 = Net::HTTP.get_response(uri_2)
             pokemon_hash = JSON.parse(response_2.body)
-            hp =  pokemon_hash['stats'][0]['base_stat']
             name = pokemon_hash['forms'][0]['name']
+            hp =  pokemon_hash['stats'][0]['base_stat']
             type = pokemon_hash['types'][0]['type']['name']
-            Pokemon.new(p_hash)
+            Pokemon.new(name, hp, type)
         end
     end
     

@@ -2,6 +2,7 @@ require 'bundler'
 require 'net/http'
 require 'uri'
 require 'json'
+require 'colorize'
 Bundler.require
 
 require_relative "./pokemon_cli/version"
