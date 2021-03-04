@@ -4,10 +4,10 @@ class Pokemon
 
     attr_accessor :name, :type, :hp
 
-    def initialize(name, type, hp)
-        @name = name 
-        @type = type
-        @hp = hp
+    def initialize(p_hash)
+        @name = p_hash["name"]
+        @type = p_hash["type"]
+        @hp = p_hash["hp"]
         save
     end
 
@@ -19,7 +19,12 @@ class Pokemon
         @@all
     end
 
-    #write a method to index all pokemon in alphabetical order 1 - 100 
+    #write method that finds pokemon by index
+
+    def self.find_pokemon(pokemon_name)
+        self.all.find{|pokemon| pokemon.name == pokemon_name}
+    end
+
 
 
 

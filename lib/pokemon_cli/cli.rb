@@ -3,7 +3,7 @@ class CLI
 
     def start
         puts "Welcome to the Poke Index!"
-        sleep(2)
+        API.get_pokemon
         home
         
     end
@@ -12,7 +12,7 @@ class CLI
         gets.strip
     end
 
-    def home()
+    def home
        puts "Type '1' to view a list of Pokemon"
        puts "Type 'quit' to quit the program"
        menu
@@ -33,19 +33,19 @@ class CLI
 
     def quit
         puts "Thank you for checking out the Poke Index!"
-        sleep(1)
     end
 
     def invalid
         puts "Invalid entry, please try again"
-        sleep(1)
         home
     end
 
+    def alphabetical_pokemon
+        Pokemon.all.sort_by {|pokemon| pokemon.name}
+    end
+
     def pokemon_list
-        ["pokemon 1", "pokemon 2", "pokemon 3"].each.with_index(1) do |pokemon, i|
-            puts "#{i}. #{pokemon}"
-        end
+        alphabetical_pokemon.each.with_index(1) {|pokemon, i| puts "#{i}. " "#{pokemon.name}"}
         pokemon_selection
     end
 
@@ -53,5 +53,7 @@ class CLI
         puts "Enter the number beside the Pokemon's name for more detail"
 
         selection = user_input
-        
+        puts "#{selection}"
+        #Pokemon.find_pokemon(selection)
+    end
 end
