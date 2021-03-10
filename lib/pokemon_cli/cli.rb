@@ -48,6 +48,8 @@ class CLI
             quit
         else 
             invalid_menu
+            sleep(1)
+            home
         end
     end
 
@@ -78,12 +80,15 @@ class CLI
         puts ""
         puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~".yellow
         puts ""
-        puts "Enter the number beside the Pokemon's name for more info:".green
-        puts "  (If you would like to exit the program, type 'quit')".blue
+        puts "Enter the number beside the Pokemon's name for more info".green
+        puts "  (If you would like to view the list again, type 'list')".blue
+        puts "  (If you would like to close the program, type 'quit')".red
         @poke_input = gets.strip
         if poke_input.to_i.between?(1,20)
             @alpha = poke_input.to_i-1
             pokemon_info(alpha)
+        elsif @poke_input == 'list'
+            pokemon_list
         elsif @poke_input == 'quit'
             quit
         else 
