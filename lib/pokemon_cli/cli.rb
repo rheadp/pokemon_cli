@@ -2,7 +2,25 @@ class CLI
 
     attr_accessor :alpha, :details, :poke_input
 
+    def art 
+        puts  <<-'ART'.yellow
+        ,'\                             
+        _.----.        ____         ,'  \   ___    ___     ____       
+    _,-'       `.     |    |  /`.   \,-''   |   \  /   |   |    \  |`. 
+    \      __    \    '-.  | /   `.  ___    |    \/    |   '-.   \ |  |
+     \.    \ \   |  __  |  |/    ,','_  `.  |          | __  |    \|  |
+       \    \/   /,' _`.|      ,' / / / /   |          ,' _`.|     |  |
+        \     ,-'/  /   \    ,'   | \/ / ,`.|         /  /   \  |     |
+         \    \ |   \_/  |   `-.  \    `'  /|  |    ||   \_/  | |\    |
+          \    \ \      /       `-.`.___,-' |  |\  /| \      /  | |   |
+           \    \ `.__,'|  |`-._    `|      |__| \/ |  `.__,'|  | |   |
+            \_.-'       |__|    `-._ |              '-.|     '-.| |   |
+                                    `'                            '-._|
+        ART
+    end
+
     def start
+        art
         puts "WELCOME TO THE POKE INDEX!!".yellow
         API.get_pokemon
         home 
@@ -38,8 +56,8 @@ class CLI
     end
 
     def invalid
-        puts "Invalid entry, please try again".red
-        home
+        puts "Sorry! You entered a number out of range or the command is not understood!".cyan 
+        puts "Please, try again!".magenta
     end
 
     def alphabetical_pokemon
@@ -61,11 +79,10 @@ class CLI
         if poke_input.to_i.between?(1,20)
             @alpha = poke_input.to_i-1
             pokemon_info(alpha)
-        elsif poke_input == 'quit'
+        elsif @poke_input == 'quit'
             quit
         else 
-            puts "Sorry! You entered a number out of range or the command is not understood!".cyan 
-            puts "Please, try again!".magenta   
+            invalid  
         end
     end
 
