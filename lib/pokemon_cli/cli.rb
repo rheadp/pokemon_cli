@@ -47,7 +47,7 @@ class CLI
         elsif selection == 'quit'
             quit
         else 
-            invalid 
+            invalid_menu
         end
     end
 
@@ -55,8 +55,13 @@ class CLI
         puts "Thank you for checking out the Poke Index!".yellow
     end
 
-    def invalid
+    def invalid_selection
         puts "Sorry! You entered a number out of range or the command is not understood!".cyan 
+        puts "Please, try again!".magenta
+    end
+
+    def invalid_menu
+        puts "Sorry! You entered a number out of range or the command is not understood!".cyan
         puts "Please, try again!".magenta
     end
 
@@ -82,7 +87,9 @@ class CLI
         elsif @poke_input == 'quit'
             quit
         else 
-            invalid  
+            invalid_selection
+            sleep(2)
+            pokemon_selection
         end
     end
 
