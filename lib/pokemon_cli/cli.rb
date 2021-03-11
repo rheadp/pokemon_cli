@@ -55,6 +55,7 @@ class CLI
 
     def quit
         puts "Thank you for checking out the Poke Index!".yellow
+        exit
     end
 
     def invalid_selection
@@ -81,7 +82,9 @@ class CLI
         puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~".yellow
         puts ""
         puts "Enter the number beside the Pokemon's name for more info".green
+        puts "----------------------------------------------------------".yellow
         puts "  (If you would like to view the list again, type 'list')".blue
+        puts "----------------------------------------------------------".yellow
         puts "  (If you would like to close the program, type 'quit')".red
         @poke_input = gets.strip
         if poke_input.to_i.between?(1,20)
