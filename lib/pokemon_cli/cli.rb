@@ -123,7 +123,5 @@ class CLI
 
     def pokemon_type
         puts "Type: #{@details.type}".magenta
-    end
-
-
+    endo        
 end
